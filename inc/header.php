@@ -35,7 +35,7 @@ echo "<div class='container-fluid'>";
 echo "<div class='row'>";
 
 echo "<div class='col-md-10 col-md-offset-1'><div class='page-header'><h1>";
-echo htmlspecialchars($title);
+echo "<a href='/' target='_self'>" . htmlspecialchars($title) . "</a>";
 echo "</h1></div>";
 
 ?>
