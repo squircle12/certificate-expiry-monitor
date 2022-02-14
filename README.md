@@ -1,12 +1,8 @@
 # Certificate Expiry Monitor
 
-Notice: https://raymii.org/s/blog/Cancellation_notice_for_cipherlist_ssldecoder_and_certificatemonitor.html
-
 ## About
 
 Certificate Expiry Monitor is an open source monitoring tool for certificates. It monitors websites and emails you when the certificates are about to expire.
-
-See the example site: https://certificatemonitor.org/
 
 ## Requirements
 
@@ -18,17 +14,14 @@ See the example site: https://certificatemonitor.org/
 
 Unpack, change some variables, setup a cronjob and go!
 
-First get the code and unpack it to your webroot:
-
-    cd /var/www/html/
-    git clone https://github.com/RaymiiOrg/certificate-expiry-monitor.git
+First get the code and unpack it to your webroot
 
 Create the database files, outside of your webroot. If you create these inside your webroot, everybody can read them.
 
-    echo '{}' > /var/www/certificate-expiry-monitor-db/pre_checks.json
-    echo '{}' > /var/www/certificate-expiry-monitor-db/checks.json
-    echo '{}' > /var/www/certificate-expiry-monitor-db/deleted_checks.json
-    chown -R $wwwuser /var/www/certificate-expiry-monitor-db/*.json
+    echo '{}' > pre_checks.json
+    echo '{}' > checks.json
+    echo '{}' > deleted_checks.json
+    chown -R $wwwuser *.json
 
 These files are used by the tool as database for checks.
 
@@ -44,7 +37,7 @@ Change the location of these files in `variables.php`:
 
 Also change the `$current_domain` variable, it is used in all the email addresses.
 
-    $current_domain = "certificatemonitor.org";
+    $current_domain = "certmonitor.gwyncon.org";
 
 And `$current_link`, which may or may not be the same. It is used in the confirm and unsubscribe links, and depends on your webserver configuration. `example.com/subdir` here means your unsubscribe links will start `https://example.com/subdir/unsubscribe.php`.
 
